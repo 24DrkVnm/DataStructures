@@ -24,7 +24,7 @@ void main()
 	spMat[0][0]=rw;
 	spMat[0][2]=nonZ;
 	printf("%d\t%d\t%d\n",spMat[0][0],spMat[0][1],spMat[0][2]);
-	for(i=1;i<rw;i++)
+	for(i=0;i<rw;i++)
 	{
 		for(j=0;j<cl;j++)
 		{

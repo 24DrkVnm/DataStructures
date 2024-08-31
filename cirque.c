@@ -1,9 +1,8 @@
 #include<stdio.h>
-int front=-1,rear=-1,maxSize,arr[100];
+int front=-1,rear=-1,maxSize,arr[100],count;
 void enque(int elemx)
 {
-	printf("\n%d",elemx);
-	if(rear==maxSize)
+	if(front==((rear+1)%maxSize))
 	{
 		printf("\nOverflow");
 	}
@@ -12,41 +11,48 @@ void enque(int elemx)
 		front=0;
 		rear=0;
 		arr[rear]=elemx;
+		count++;
 	}
 	else 
 	{
-		++rear;
+		rear=(rear+1)%maxSize;
 		arr[rear]=elemx;
+		count++;
 	}
 } 
 void deque()
 {
-	if(front==-1)
+	if(front==-1 && rear==-1)
 	{
 	printf("\nUnderflow");                                                                                                                                                   
 	}
-	else if(front>rear)
+	else if(front==rear)
 	{
-	 front=-1;
-	 rear=-1;
+	printf("%d",arr[front]);
+	front++;
+	rear++;
+	count--;
 	}
 	else 
 	{
+	printf("%d",arr[front]);
 	front++;
+	count--;
 	}
 }
 void display()
 {
-for(int i=front;i<=rear;i++)
+int i=front;
+for(int j=0;j<count;j++)
 	{
 		printf("%d ",arr[i]);
+		i=((i+1)%maxSize);
 	}
 }
 void main()
 {
 	int fn=0;
 	int elemx;
-	printf("%d",maxSize);
 	printf("Enter the naximum size of the queue");
 	scanf("%d",&maxSize);
 	while(fn!=4)
