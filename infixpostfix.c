@@ -68,8 +68,9 @@ int main() {
                }}
                stack[top]=infix[i];
                }
+               i++;
         }
-          i++;
+          
         }
 
       
