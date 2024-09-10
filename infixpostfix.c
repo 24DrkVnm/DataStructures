@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include <string.h> 
 
+int priority(char element)
+        {
+            if(element=='^')
+            	return 3;
+            if(element=='*'||element=='/')
+            	return 2;
+            if(element=='+'||element=='-')
+            	return 1;
+            //else 
+            	//	return -1;
+            }	
+
 int main() {
     char infix[20];
-    6+
     char stack[20];
     int top = -1;
     int i = 0;
@@ -21,44 +32,46 @@ int main() {
         char element = infix[i];
 
        
-        if (/*(element >= '0' && element <= '9') */|| (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z')) {
+        if (/*(element >= '0' && element <= '9') ||*/ (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z')) {
             printf("%c ", element);
         }
        
-        else if (element == '(') {
+        else if (element == '(')
+        {
             top++;
             stack[top] = element;
         }
-         else if (element == ')') {
-            while (top >= 0 && stack[top] != '(') {
-                char x = stack[top];
+        else if (element == ')') 
+        {
+            while (top >= 0 && stack[top] != '(')
+            {
+                printf("%c ", element);
+               // char x = stack[top];
                 top--;
-                if (x != '(')
-                    printf("%c ", x);
-            }
+               // if (x != '(')
+                
+            }}
             
-            else if (top >= 0 && stack[top] == '(') {
-                top--;
-            }} 
-         else{
-         	if(stack[top]='(')
-         		{
-         			top++;
-         			stack[top]=element;
-         		}
-               else if(priority(infix[i])<=priority(stack[top])
+        else {
+            while(priority(stack[top])>=priority(infix[i])){
+               if(priority(infix[i])<priority(stack[top]))
+               {
+                    printf("%c",(stack[top]));
+                    top--;
+                
                }
+               else if(priority(infix[i])==priority(stack[top]))
+               {
+                    printf("%c",(stack[top]));
+                    top--;
+                    
+               }}
+               stack[top]=infix[i];
+               }
+        }
           i++;
         }
-        int priority()
-        {
-            if(element=='^')
-            	return 3;
-            if(element=='*'||element=='/')
-            	return 2;
-            if(element=='+'||element=='-')
-            	return 1;
-            //else 
-            	//	return -1;
-            }	
+
+      
+
        
